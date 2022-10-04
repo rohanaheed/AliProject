@@ -19,11 +19,18 @@ import NoPage from "./NoPage/NoPage";
 import NFTDetails from "./NFTDetails/NFTDetail";
 import Explore from "./Explore/Marketplace";
 
+const projectId = '2FaDEddb5iVlHKWnFK3hpeSvKVf';
+const secretKey = '11a9f04d39c95f9caca18f2f98b6d575';
+const auth = 'Basic ' + Buffer.from(projectId + ':' + secretKey).toString('base64');
+
 const ipfsClient = require("ipfs-http-client");
 const ipfs = ipfsClient({
   host: "ipfs.infura.io",
   port: 5001,
   protocol: "https",
+  headers: {
+    authorization: auth,
+  },
 });
 
 class App extends Component {
@@ -155,7 +162,7 @@ class App extends Component {
           var year = currentTime.getFullYear();
           const overAllDate = month + " " + day + " " + year;
           await this.uploadProfile(
-            "https://ipfs.infura.io/ipfs/QmeAcsFZfRd719RHMivPUitJpXzH54k8d3CXpmvmLZnF7A",
+            "https://ipfs.io/ipfs/QmeAcsFZfRd719RHMivPUitJpXzH54k8d3CXpmvmLZnF7A",
             "https://bafybeih5pgcobf6hpgf2pexmkhfsk55zr4dywrazgybk7u2fp6w4webkxu.ipfs.infura-ipfs.io/",
             "Unnamed",
             "No description",
@@ -315,7 +322,7 @@ class App extends Component {
         description: description,
       };
       const cid = await ipfs.add(JSON.stringify(tokenObject));
-      let tokenURI = `https://ipfs.infura.io/ipfs/${cid.path}`;
+      let tokenURI = `https://ipfs.io/ipfs/${cid.path}`;
       const price = window.web3.utils.toWei(tokenPrice.toString(), "ether");
       this.state.NFTContract.methods
         .mintNFT(name, tokenURI, price, fileUrl, dateTime)

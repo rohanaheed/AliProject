@@ -4,11 +4,18 @@ import { Link } from "react-router-dom";
 import "./assets/profile-setting.css";
 import eye from "./assets/eye.svg";
 
+const projectId = '2FaDEddb5iVlHKWnFK3hpeSvKVf';
+const secretKey = '11a9f04d39c95f9caca18f2f98b6d575';
+const auth = 'Basic ' + Buffer.from(projectId + ':' + secretKey).toString('base64');
+
 const ipfsClient = require("ipfs-http-client");
 const ipfs = ipfsClient({
   host: "ipfs.infura.io",
   port: 5001,
   protocol: "https",
+  headers: {
+    authorization: auth,
+  },
 });
 
 class Settings extends Component {
@@ -27,18 +34,19 @@ class Settings extends Component {
     const file = e.target.files[0];
     try {
       const added = await ipfs.add(file);
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      const url = await `https://ipfs.io/ipfs/${added.path}`;
       this.setState({ imageHash: url });
       this.setState({ imageIsUpload: true });
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
   };
+  
   onUpload1 = async (e) => {
     const file = e.target.files[0];
     try {
       const added = await ipfs.add(file);
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      const url = await `https://ipfs.io/ipfs/${added.path}`;
       this.setState({ bannerHash: url });
       this.setState({ imageIsUpload: true });
     } catch (error) {
@@ -47,6 +55,8 @@ class Settings extends Component {
   };
   callUploadProfileFromApp = (e) => {
     e.preventDefault();
+    debugger
+    console.log("e")
     this.props.uploadProfile(
       this.state.bannerHash,
       this.state.imageHash,
@@ -58,6 +68,7 @@ class Settings extends Component {
   };
 
   render() {
+    
     return (
       <div class="setting-main main-u">
         <div class="inner-u">

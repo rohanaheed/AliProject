@@ -59,7 +59,7 @@ contract("NFT Marketplace", async (accounts) => {
         "myNFT",
         "https://gateway.pinata.cloud/ipfs/QmYFmJgQGH4uPHRYN15Xdv4aLd9o4Aq63y1e4GgN6kj5aK/2",
         web3.utils.toWei("1", "Ether"),
-        "https://ipfs.infura.io/ipfs/QmQAqW6a5wLZQt5ZMXwNuf8AYDQFRc26hGCmEVzmM46RVd",
+        "https://ipfs.io/ipfs/QmQAqW6a5wLZQt5ZMXwNuf8AYDQFRc26hGCmEVzmM46RVd",
         { from: accounts[0] }
       );
 
@@ -104,7 +104,7 @@ contract("NFT Marketplace", async (accounts) => {
         "myNFT2",
         "https://gateway.pinata.cloud/ipfs/QmYFmJgQGH4uPQRYN15Xdv4aLd9o4Aq63y1e4GgN6kj5aK/2",
         web3.utils.toWei("1", "Ether"),
-        "https://ipfs.infura.io/ipfs/QmdRa9J1jRcBUEBubDjyd4QG7326n7NiJ6sUnG5W9DKxza",
+        "https://ipfs.io/ipfs/QmdRa9J1jRcBUEBubDjyd4QG7326n7NiJ6sUnG5W9DKxza",
         { from: accounts[1] }
       );
 
@@ -113,7 +113,7 @@ contract("NFT Marketplace", async (accounts) => {
         "myNFT3",
         "https://gateway.pinata.cloud/ipfs/QmYFmJgQGH4uPQRYN15Xdv4aLd9o4Aq63y1e4GgN6kj5aK/2",
         web3.utils.toWei("1", "Ether"),
-        "https://ipfs.infura.io/ipfs/QmdRa9J1jRcBUEBubDjyd4QG7326n7NiJ6sUnG5W9DKxza",
+        "https://ipfs.io/ipfs/QmdRa9J1jRcBUEBubDjyd4QG7326n7NiJ6sUnG5W9DKxza",
         { from: accounts[3] }
       ).should.be.rejected;
 
@@ -123,7 +123,7 @@ contract("NFT Marketplace", async (accounts) => {
         "myNFT4",
         "https://gateway.pinata.cloud/ipfs/QmYFmJgQGH4uPQRYN14Xdv4aLd9o4Aq63y1e4GgN6kj5aK/2",
         web3.utils.toWei("1", "Ether"),
-        "https://ipfs.infura.io/ipfs/QmX77qRXWvFnVqWdyZoEGDnPEbwcrbquD3Q1o1uex3ZKgK",
+        "https://ipfs.io/ipfs/QmX77qRXWvFnVqWdyZoEGDnPEbwcrbquD3Q1o1uex3ZKgK",
         { from: 0x0000000000000000000000000000000000000000 }
       ).should.be.rejected;
 
@@ -132,7 +132,7 @@ contract("NFT Marketplace", async (accounts) => {
         "myNFT",
         "https://gateway.pinata.cloud/ipfs/QmYFmJgQGH4uPSRYN15Xdv4aLd3o4Aq63y1e4GgN6kj5aK/2",
         web3.utils.toWei("1", "Ether"),
-        "https://ipfs.infura.io/ipfs/QmPkygTPfetvGihnH8VLfp1muQUGikExgFnSZJSU6fZ2kA",
+        "https://ipfs.io/ipfs/QmPkygTPfetvGihnH8VLfp1muQUGikExgFnSZJSU6fZ2kA",
         { from: accounts[0] }
       ).should.be.rejected;
 

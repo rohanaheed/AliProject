@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import "./style.css";
+const projectId = '2FaDEddb5iVlHKWnFK3hpeSvKVf';
+const secretKey = '11a9f04d39c95f9caca18f2f98b6d575';
+const auth = 'Basic ' + Buffer.from(projectId + ':' + secretKey).toString('base64');
 
 const ipfsClient = require("ipfs-http-client");
 const ipfs = ipfsClient({
   host: "ipfs.infura.io",
   port: 5001,
   protocol: "https",
+  headers: {
+    authorization: auth,
+  },
 });
 
 class FormAndPreview extends Component {
@@ -31,7 +37,8 @@ class FormAndPreview extends Component {
     const file = e.target.files[0];
     try {
       const added = await ipfs.add(file);
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      const url = await `https://ipfs.io/ipfs/${added.path}`;
+      // const url = `https://ipfs.infura.io/ipfs/${added.path}`;
 
       image.style.height = "100%";
       image.style.width = "100%";
